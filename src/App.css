@@ -27,12 +27,60 @@
     align-items: center;
 }
 
+.result-content{
+    font-size:30px;
+}
+
+/*组件入场前的状态*/
+.animation-enter{
+    transform:translateY(-20px);
+    opacity:0;
+}
+
+/*组件正在入场时候的动画*/
+.animation-enter-active{
+    transform:translateY(0);
+    opacity:1;
+    transition:all 300ms ease-in-out;
+}
+
+.animation-exit {
+    opacity: 1;
+}
+
+.animation-exit-active {
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 300ms ease-out;
+}
+
 .list{
     width:400px;
-    background: #b8bbff;
+    /*background: #b8bbff;*/
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: auto;
+}
+
+.item{
+    height: 30px;
+    width:100%;
+    overflow: hidden;
+    border-bottom: 1px solid #6f6f6f;
+    padding:0;
+    margin:0;
+    background: #a18ced;
+}
+
+.item-enter{
+    height: 0;
+    opacity: 0;
+}
+
+.item-enter-active {
+    opacity: 1;
+    height: 30px;
+    transition: 500ms ease-out;
 }
