@@ -50,7 +50,8 @@ class App extends Component {
     const startStyle = {transform:`rotate(${this.state.rotate}deg)`};
     return (
       <div className="App">
-        <div className={'turntable'}>
+        <h1 className = {'message'} onClick={this.handleClick}>点击转针进行进行抽奖</h1>
+        <div className={'turntable'} >
           <img
             src={require('./images/start.png')}
             alt="pointer"

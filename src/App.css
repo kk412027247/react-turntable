@@ -18,6 +18,18 @@
     transition:1000ms;
 }
 
+.App .start:hover{
+    cursor: pointer;
+}
+
+.message{
+    user-select: none;
+}
+
+.message:hover{
+    cursor: pointer;
+}
+
 .result{
     width:400px;
     height: 100px;
