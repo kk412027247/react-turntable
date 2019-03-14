@@ -37,17 +37,19 @@
     opacity:0;
 }
 
-/*组件正在入场时候的动画*/
+/*组件正在入场时候的动画, all 指的是所有属性一起变化，ease-in-out 先快后慢的一种时间线*/
 .animation-enter-active{
     transform:translateY(0);
     opacity:1;
     transition:all 300ms ease-in-out;
 }
 
+/*组件出场前的动画*/
 .animation-exit {
     opacity: 1;
 }
 
+/*组件正在出场的动画*/
 .animation-exit-active {
     opacity:0;
     transform:translateY(20px);
@@ -81,9 +83,26 @@
     transform: translateX(-20%);
 }
 
+
+/*transition属性可以单独设置多个属性的动画状态，构成一个组合动画，第一个属性是 变化的属性名称，
+有两个时间的话，第一个时间是动画的延时，第二个时间是动画持续时间。最后一个是时间线参数，
+以下动画就组合成先200ms改变高度，再300ms发生右边位移*/
 .item-animated-enter-active {
     opacity: 1;
     height: 30px;
     transform: translateX(0);
     transition:height 200ms, opacity 200ms 300ms, transform 200ms 300ms ease-in-out;
+}
+
+.item-animated-exit{
+    opacity: 1;
+    height: 30px;
+    transform: translateX(0);
+}
+
+.item-animated-exit-active{
+    opacity:0;
+    height:0;
+    transform: translateX(20%);
+    transition: opacity 300ms, transform 300ms ease-in-out, height 300ms 200ms;
 }

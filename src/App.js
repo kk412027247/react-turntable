@@ -35,6 +35,13 @@ class App extends Component {
     })},1100)
   };
 
+  handleRemove = _id => {
+    const list = this.state.list.filter(({id})=>{
+      return id !== _id
+    });
+    this.setState({list});
+  };
+
   componentWillUnmount(){
     !!this.timmer && clearTimeout(this.timmer)
   }
@@ -81,6 +88,8 @@ class App extends Component {
                   key={id}
                   timeout={500}
                   classNames={'item-animated'}
+                  // 点击元素卸载元素
+                  onClick={this.handleRemove.bind(null,id)}
                 >
                   <p className={'item'}>{item}</p>
                 </CSSTransition>
