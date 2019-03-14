@@ -61,7 +61,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: auto;
 }
 
 .item{
@@ -71,16 +70,20 @@
     border-bottom: 1px solid #6f6f6f;
     padding:0;
     margin:0;
-    background: #a18ced;
+    background: #beaeed;
+    text-align:center;
+    line-height: 30px;
 }
 
-.item-enter{
+.item-animated-enter{
     height: 0;
     opacity: 0;
+    transform: translateX(-20%);
 }
 
-.item-enter-active {
+.item-animated-enter-active {
     opacity: 1;
     height: 30px;
-    transition: 500ms ease-out;
+    transform: translateX(0);
+    transition:height 200ms, opacity 200ms 300ms, transform 200ms 300ms ease-in-out;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
+import uuid from 'uuid';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +13,6 @@ class App extends Component {
     // 当按钮不可用的时候，表示正在抽奖，同时隐藏抽奖结果
     enable:true,
   };
-  // 八个格子，分别对应
 
   random = () => Math.floor(Math.random() * 8);
 
@@ -30,7 +30,7 @@ class App extends Component {
     });
     this.timmer = setTimeout(()=>{this.setState({
       number: randomNumber,
-      list:[...list, {item:randomNumber, time: Date.now()+''}],
+      list:[{item:randomNumber, id: uuid()}, ...list],
       enable: true,
     })},1100)
   };
@@ -72,24 +72,21 @@ class App extends Component {
 
         </div>
 
-
+          <h3>开奖历史</h3>
           {/*TransitionGroup组件可以管理一套CSSTransition，会动态给每个组件设置in属性*/}
           <TransitionGroup className={'list'}>
             {
-              this.state.list.slice().reverse().map(({item, time})=>(
+              this.state.list.map(({item, id})=>(
                 <CSSTransition
-                  id={time}
+                  key={id}
                   timeout={500}
-                  classNames={'item'}
-                  className={'item'}
+                  classNames={'item-animated'}
                 >
-                  <p>{item}</p>
+                  <p className={'item'}>{item}</p>
                 </CSSTransition>
               ))
             }
           </TransitionGroup>
-
-
       </div>
     );
   }
